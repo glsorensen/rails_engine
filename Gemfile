@@ -44,10 +44,10 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 group :test do
-  gem 'simplecov'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'simplecov'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
