@@ -31,5 +31,5 @@ RSpec.describe 'items endpoint' do
       expect(item).to have_key(:type)
       expect(item[:type]).to be_a(String)
     end
- end
+  end
 end
