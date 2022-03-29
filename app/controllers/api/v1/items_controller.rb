@@ -1,5 +1,5 @@
 class Api::V1::ItemsController < ApplicationController
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :update, :destroy]
 
   def index
     render json:(ItemSerializer.new(Item.all))
@@ -16,6 +16,16 @@ class Api::V1::ItemsController < ApplicationController
 
   def destroy
     render json: Item.delete(params[:id]), status: :no_content
+  end
+
+  def update
+
+    item = Item.update(@item.id, item_params)
+    if item.save
+      render json: ItemSerializer.new(item)
+    else
+      render json: { status: 'ERROR', message: 'Unable to save item. Please try again', data: item.errors}, status: :bad_request
+    end
   end
 
   private
