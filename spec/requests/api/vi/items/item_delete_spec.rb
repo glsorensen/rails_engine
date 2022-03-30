@@ -10,6 +10,6 @@ RSpec.describe 'the item delete endpoint' do
 
     expect(response).to have_http_status(204)
     expect(Item.count).to eq(0)
-    expect{Item.find(item.id)}.to raise_error(ActiveRecord::RecordNotFound)
+    expect { Item.find(item.id) }.to raise_error(ActiveRecord::RecordNotFound)
   end
 end

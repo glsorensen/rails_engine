@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'items endpoint' do
   it 'shows all items' do
-
     items = create_list(:item, 5)
 
     get api_v1_items_path

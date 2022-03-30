@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'merchant endpoint' do
   context 'happy path' do
-    it 'returns one merchant'do
+    it 'returns one merchant' do
       gunnar = create(:merchant)
 
       get api_v1_merchant_path(gunnar.id)
@@ -22,7 +22,6 @@ RSpec.describe 'merchant endpoint' do
       expect(merchant_data).to have_key(:attributes)
       expect(merchant_data[:attributes]).to be_a(Hash)
 
-
       expect(merchant_data[:attributes]).to have_key(:name)
       expect(merchant_data[:attributes][:name]).to be_a(String)
     end
@@ -33,14 +32,14 @@ RSpec.describe 'merchant endpoint' do
       merchant = create(:merchant)
       item = create(:item)
 
-      expect{get api_v1_merchant_path(1)}.to raise_error(ActiveRecord::RecordNotFound)
+      expect { get api_v1_merchant_path(1) }.to raise_error(ActiveRecord::RecordNotFound)
     end
 
     it 'string as integer returns 404' do
       merchant = create(:merchant)
       item = create(:item)
 
-      expect{get api_v1_merchant_path("test")}.to raise_error(ActiveRecord::RecordNotFound)
+      expect { get api_v1_merchant_path('test') }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 end

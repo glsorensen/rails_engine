@@ -37,14 +37,14 @@ RSpec.describe 'the merchant from item endpoint' do
       merchant = create(:merchant)
       item = create(:item)
 
-      expect{get api_v1_item_merchant_index_path(55)}.to raise_error(ActiveRecord::RecordNotFound)
+      expect { get api_v1_item_merchant_index_path(55) }.to raise_error(ActiveRecord::RecordNotFound)
     end
 
     it 'string inseatd of integer returns 404' do
       merchant = create(:merchant)
       item = create(:item)
 
-      expect{get api_v1_item_merchant_index_path("hola")}.to raise_error(ActiveRecord::RecordNotFound)
+      expect { get api_v1_item_merchant_index_path('hola') }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 end

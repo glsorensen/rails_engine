@@ -1,10 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'items show endpoint' do
-
-  it 'returns one item'do
-
-      item = create(:item)
+  it 'returns one item' do
+    item = create(:item)
 
     get api_v1_item_path(item.id)
 
@@ -38,19 +36,15 @@ RSpec.describe 'items show endpoint' do
 
   context 'sad path' do
     it 'returns a 404 if item is not found by integer' do
-
       item = create(:item)
 
-      expect{get api_v1_item_path(99999)}.to raise_error(ActiveRecord::RecordNotFound)
-
+      expect { get api_v1_item_path(99_999) }.to raise_error(ActiveRecord::RecordNotFound)
     end
 
     it 'returns a 404 if item is not found by string' do
-
       item = create(:item)
 
-      expect{get api_v1_item_path("test")}.to raise_error(ActiveRecord::RecordNotFound)
-
+      expect { get api_v1_item_path('test') }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 end
