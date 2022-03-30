@@ -10,7 +10,6 @@ RSpec.describe 'the item endpoint' do
     item_params = { name: "Charlotte's Web" }
     headers = { 'CONTENT_TYPE' => 'application/json' }
 
-    # We include this header to make sure that these params are passed as JSON rather than as plain text
     patch api_v1_item_path(item.id), headers: headers, params: JSON.generate({ item: item_params })
 
     item = Item.find_by(id: item.id)
