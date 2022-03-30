@@ -4,7 +4,7 @@ RSpec.describe 'the merchants index endpoint' do
   it 'returns all merchants' do
     create_list(:merchant, 3)
 
-    get '/api/v1/merchants'
+    get  api_v1_merchants_path
 
     merchants = JSON.parse(response.body, symbolize_names: true)
     expect(response).to have_http_status(200)
