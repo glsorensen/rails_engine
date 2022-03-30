@@ -39,17 +39,20 @@ RSpec.describe 'merchant item endpoint' do
   end
 
   context 'sad path' do
-    it 'returns a 404 if merchant is not found' do
+    it 'returns a 404 if merchant is not found (bad integer)' do
       gunnar = create(:merchant)
       items = create_list(:item, 5, merchant: gunnar)
 
-      # get "/api/v1/merchants/789/items"
-
       expect{get  api_v1_merchant_items_path(278)}.to raise_error(ActiveRecord::RecordNotFound)
 
-      # merchant_items = JSON.parse(response.body, symbolize_names: true)
-      #
-      # expect(response).to have_http_status(404)
+    end
+
+    it 'returns a 404 if merchant id is a string' do
+      gunnar = create(:merchant)
+      items = create_list(:item, 5, merchant: gunnar)
+
+      expect{get  api_v1_merchant_items_path("test")}.to raise_error(ActiveRecord::RecordNotFound)
+
     end
   end
 end
