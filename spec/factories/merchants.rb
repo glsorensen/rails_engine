@@ -7,8 +7,5 @@ FactoryBot.define do
     transient do
       item_count {2}
     end
-    after(:create) do |merchant, evaluator|
-      create_list(:item, evaluator.item_count, merchant: merchant)
-    end
   end
 end
