@@ -10,8 +10,8 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   private
-    def set_merchant
-      @merchant = Merchant.find(params[:id])
-    end
 
+  def set_merchant
+    @merchant = Merchant.find(params[:id])
+  end
 end

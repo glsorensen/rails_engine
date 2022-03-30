@@ -1,19 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe 'items show endpoint' do
-  it "can create a new item" do
-
+  it 'can create a new item' do
     merchant_1 = create(:merchant)
     merchant_2 = create(:merchant)
 
-    item_params = ({
-        name: "Candy",
-        description: "Tastes Good",
-        unit_price: 12.32,
-        merchant_id: merchant_1.id
-      })
+    item_params = {
+      name: 'Candy',
+      description: 'Tastes Good',
+      unit_price: 12.32,
+      merchant_id: merchant_1.id
+    }
 
-    headers = {"CONTENT_TYPE" => "application/json"}
+    headers = { 'CONTENT_TYPE' => 'application/json' }
 
     # We include this header to make sure that these params are passed as JSON rather than as plain text
     post api_v1_items_path, headers: headers, params: JSON.generate(item: item_params)
