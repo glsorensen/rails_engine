@@ -13,6 +13,5 @@ class Api::V1::SearchesController < ApplicationController
         render json: MerchantSerializer.new(@merchant)
       end
     end
-    end
   end
 end
