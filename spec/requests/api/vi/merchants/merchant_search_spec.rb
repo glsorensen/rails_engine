@@ -51,5 +51,38 @@ RSpec.describe 'Merchant Search endpoint' do
      expect(results).to have_key(:data)
      expect(results[:data]).to eq({})
    end
+   it 'errors if a parameter is empty' do
+      get '/api/v1/merchants/find'
+
+      results = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to have_http_status(400)
+
+      expect(results).to have_key(:status)
+      expect(results[:status]).to eq("BAD REQUEST")
+
+      expect(results).to have_key(:message)
+      expect(results[:message]).to eq('search parameters cannot be empty')
+
+      expect(results).to have_key(:data)
+      expect(results[:data]).to eq({})
+    end
+
+    it 'errors if a parameter is incomplete' do
+      get '/api/v1/merchants/find?name='
+
+      results = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to have_http_status(400)
+
+      expect(results).to have_key(:status)
+      expect(results[:status]).to eq("BAD REQUEST")
+
+      expect(results).to have_key(:message)
+      expect(results[:message]).to eq('search parameters cannot be empty')
+
+      expect(results).to have_key(:data)
+      expect(results[:data]).to eq({})
+    end
   end
-end
+ end
