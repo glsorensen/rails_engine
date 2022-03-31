@@ -15,7 +15,8 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def destroy
-    render json: Item.delete(params[:id]), status: :no_content
+    @item = Item.find(params[:id])
+    @item.destroy!
   end
 
   def update
