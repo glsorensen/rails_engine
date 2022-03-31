@@ -5,6 +5,6 @@ class Item < ApplicationRecord
   validates :unit_price, numericality: true
 
   def self.search(params)
-    where("name ILIKE ?", "%#{params}%").order(:name)
+    where('name ILIKE ?', "%#{params}%").order(:name)
   end
 end
