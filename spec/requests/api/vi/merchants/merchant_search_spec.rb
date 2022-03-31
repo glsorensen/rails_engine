@@ -21,7 +21,7 @@ RSpec.describe 'Merchant Search endpoint' do
       expect(results_data[:id]).to be_a(String)
 
       expect(results_data).to have_key(:type)
-      expect(results_data[:type]).to eq("merchant")
+      expect(results_data[:type]).to eq('merchant')
 
       expect(results_data).to have_key(:attributes)
       expect(results_data[:attributes]).to be_a(Hash)
@@ -29,9 +29,7 @@ RSpec.describe 'Merchant Search endpoint' do
       merchant = results_data[:attributes]
 
       expect(merchant).to have_key(:name)
-      expect(merchant[:name]).to eq("Zena")
-    
-
+      expect(merchant[:name]).to eq('Zena')
     end
   end
   context 'sad path/ edge case' do
