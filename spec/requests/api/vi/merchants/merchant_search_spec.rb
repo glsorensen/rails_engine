@@ -33,5 +33,21 @@ RSpec.describe 'Merchant Search endpoint' do
     end
   end
   context 'sad path/ edge case' do
+    it 'returns successful but w/o results if nothing matches' do
+      get '/api/v1/merchants/find?name=nothing'
+
+      results = JSON.parse(response.body, symbolize_names: true)
+
+      expect(response).to have_http_status(200)
+
+      expect(results).to have_key(:status)
+      expect(results[:status]).to eq('SUCCESS')
+
+      expect(results).to have_key(:message)
+      expect(results[:message]).to eq('No merchant matches that name!')
+
+      expect(results).to have_key(:data)
+      expect(results[:data]).to eq({})
+    end
   end
 end
