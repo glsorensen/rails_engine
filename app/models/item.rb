@@ -13,5 +13,4 @@ class Item < ApplicationRecord
   def find_empty_invoices
     invoices.joins(:items).select('invoices.*, count(items.*)').group('invoices.id').having('count(items.*) = 1').pluck(:id)
   end
-
 end
