@@ -16,7 +16,11 @@ class Api::V1::ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
+    empties = @item.find_empty_invoices
     @item.destroy!
+    Invoice.find_by(id: empties).destroy!
+    # @item = Item.find(params[:id])
+    # @item.destroy!
   end
 
   def update
